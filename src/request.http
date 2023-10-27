@@ -1,0 +1,12 @@
+### Prueba
+GET http://localhost:3000/
+### Enviar equipos
+POST http://localhost:3000/teams
+Content-Type: application/json
+
+{
+  "teams":{
+    "firstTeam": ["Luis", "Maria", "Carlos", "Ana", "Pedro"],
+    "secondTeam": ["Laura", "José", "Sofía", "Miguel", "Elena"]
+  }
+}

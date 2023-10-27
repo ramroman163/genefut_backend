@@ -1,0 +1,30 @@
+{
+  "name": "genefut_backend",
+  "version": "1.0.0",
+  "description": "Backend de la aplicación web 'Genefut'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Api",
+    "Backend",
+    "Futbol"
+  ],
+  "author": "Román Martinez",
+  "license": "ISC",
+  "devDependencies": {
+    "picocolors": "1.0.0",
+    "standard": "17.1.0"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "express": "4.18.2",
+    "express-session": "1.17.3",
+    "mysql": "2.18.1",
+    "zod": "3.22.4"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
