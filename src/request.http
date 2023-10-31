@@ -8,5 +8,25 @@ Content-Type: application/json
   "teams":{
     "firstTeam": ["Luis", "Maria", "Carlos", "Ana", "Pedro"],
     "secondTeam": ["Laura", "José", "Sofía", "Miguel", "Elena"]
-  }
+  },
+  "category": "Fútbol 5"
 }
+
+### Obtener equipos
+GET http://localhost:3000/teams
+
+### Enviar equipos
+POST http://localhost:3000/teams
+Content-Type: application/json
+
+{
+  "teams":{
+    "firstTeam": ["Juan", "Carmen", "Roberto", "Isabel", "Francisco"],
+    "secondTeam": ["Valeria", "Andrés", "María", "Diego", "Sara"]
+  },
+  "category": "Fútbol 5"
+}
+
+
+
+

@@ -9,7 +9,7 @@ async function saveTeams (name, date, user) {
         console.error('Error almacenando el equipo')
         reject(err)
       }
-      console.log(result)
+
       console.log(`Equipo ${name} almacenado`)
 
       resolve(result.insertId)
