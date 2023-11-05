@@ -1,12 +1,20 @@
 import mysql from 'mysql'
 
 export const connector = mysql.createConnection(
+  // {
+  //   host: 'localhost',
+  //   port: 3307,
+  //   user: 'admin',
+  //   password: 'admin',
+  //   database: 'genefut_backend'
+  // }
+
   {
-    host: 'localhost',
-    port: 3307,
-    user: 'admin',
-    password: 'admin',
-    database: 'genefut_backend'
+    host: 'bugblegx1uvdegpxsknj-mysql.services.clever-cloud.com',
+    port: 3306,
+    user: 'u7tbbx2msbtij777',
+    password: 'Lom36tYgYIsNkjtOtvId',
+    database: 'bugblegx1uvdegpxsknj'
   }
 )
 
