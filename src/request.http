@@ -15,16 +15,19 @@ Content-Type: application/json
 ### Obtener equipos
 GET http://localhost:3000/teams
 
+
+
+
 ### Enviar equipos
 POST http://localhost:3000/teams
 Content-Type: application/json
 
 {
   "teams":{
-    "firstTeam": ["Juan", "Carmen", "Roberto", "Isabel", "Francisco"],
-    "secondTeam": ["Valeria", "Andrés", "María", "Diego", "Sara"]
+    "firstTeam": ["pepe", "juan", "lu", "bauti", "frank"],
+    "secondTeam": ["rod", "jonny", "ger", "leo", "mateo"]
   },
-  "category": "Fútbol 5"
+  "category": "Fútbol 7"
 }
 
 

@@ -1,6 +1,6 @@
-const mysql = require('mysql')
+import mysql from 'mysql'
 
-const connector = mysql.createConnection(
+export const connector = mysql.createConnection(
   {
     host: 'localhost',
     port: 3307,
@@ -10,7 +10,7 @@ const connector = mysql.createConnection(
   }
 )
 
-const connection = () => {
+export const connection = () => {
   connector.connect(err => {
     if (err) {
       console.error('Error al conectar con la base de datos')
@@ -18,9 +18,4 @@ const connection = () => {
     }
     console.log('La aplicación se conectó con la base de datos correctamente')
   })
-}
-
-module.exports = {
-  connection,
-  connector
 }

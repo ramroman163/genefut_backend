@@ -1,35 +1,36 @@
-const express = require('express')
-const pc = require('picocolors')
-const cors = require('cors')
-const { connection } = require('./src/bd/bd.js')
-const { savePlayers } = require('./src/services/savePlayers.js')
-const { saveTeams } = require('./src/services/saveTeams.js')
-const { saveMatch } = require('./src/services/saveMatch.js')
-const { getPlayers } = require('./src/services/getPlayers.js')
-const { assignMatch } = require('./src/services/assignMatch.js')
-const { getTeams } = require('./src/services/getTeams.js')
+import express, { json } from 'express'
+import pc from 'picocolors'
+import cors from 'cors'
+
+import { connection } from './src/bd/bd.js'
+import { savePlayers } from './src/utils/savePlayers.js'
+import { saveTeams } from './src/utils/saveTeams.js'
+import { saveMatch } from './src/utils/saveMatch.js'
+import { getPlayers } from './src/utils/getPlayers.js'
+import { assignMatch } from './src/utils/assignMatch.js'
+import { getTeamsByMatch } from './src/utils/getMatch.js'
 
 const app = express()
 
-app.use(express.json())
+app.use(json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-  console.log('Hola mundo')
+  res.send('Bienvenido al backend de Genefut')
 })
 
 app.post('/teams', async (req, res) => {
-  console.log(pc.bgGreen('POST Recibido'))
+  console.log(pc.green('POST Recibido'))
+  console.log(req.body)
   const { teams, category } = req.body
 
   await savePlayers(teams)
 
   const playersIdTeam1 = await getPlayers(teams.firstTeam)
   const playersIdTeam2 = await getPlayers(teams.secondTeam)
-  console.log(pc.bgGreen(playersIdTeam1))
-  console.log(pc.bgGreen(playersIdTeam2))
 
   const date = new Date()
+
   const actualDate = date.toISOString().split('T')[0]
 
   const idTeam1 = await saveTeams('Equipo 1', actualDate, 1)
@@ -40,20 +41,22 @@ app.post('/teams', async (req, res) => {
   assignMatch(idTeam1, idMatch, playersIdTeam1)
   assignMatch(idTeam2, idMatch, playersIdTeam2)
 
-  res.send('Jugadores almacenados')
+  res.json({
+    message: 'Jugadores almacenados',
+    status: true
+  })
 })
 
 app.get('/teams', async (req, res) => {
-  const teams = await getTeams(1)
+  console.log(pc.green('GET Recibido'))
+  const teams = await getTeamsByMatch(1)
 
-  console.log(teams)
-
-  res.send('Equipos')
+  res.json(teams)
 })
 
-const PORT = 3000
+const PORT = process.env.PORT ?? 3000
 
 app.listen(PORT, () => {
-  connection()
-  console.log(`Servidor iniciado en puerto ${PORT}`)
+  connection() // Conectamos con BD
+  console.log(`Servidor iniciado en http://localhost:${PORT}`)
 })

@@ -1,6 +1,6 @@
-const { connector } = require('../bd/bd')
+import { connector } from '../bd/bd.js'
 
-function saveMatch (date, score, category, firstTeamId, secondTeamId, user) {
+export function saveMatch (date, score, category, firstTeamId, secondTeamId, user) {
   return new Promise((resolve, reject) => {
     const sql = `INSERT INTO partidos (fecha_partido, resultado, tipo_partido, id_equipo_1, id_equipo_2, id_usuario) VALUES ("${date}", "${score}", "${category}", ${firstTeamId}, ${secondTeamId}, ${user})`
 
@@ -14,8 +14,4 @@ function saveMatch (date, score, category, firstTeamId, secondTeamId, user) {
       resolve(result.insertId)
     })
   })
-}
-
-module.exports = {
-  saveMatch
 }

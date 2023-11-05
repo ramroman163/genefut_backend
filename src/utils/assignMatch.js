@@ -1,6 +1,6 @@
-const { connector } = require('../bd/bd')
+import { connector } from '../bd/bd.js'
 
-function assignMatch (idTeam, idMatch, playersId) {
+export function assignMatch (idTeam, idMatch, playersId) {
   playersId.forEach((id) => {
     savePlayerAndMatch(idTeam, idMatch, id)
   })
@@ -16,8 +16,4 @@ function savePlayerAndMatch (idTeam, idMatch, idPlayer) {
 
     console.log('Partido asignado')
   })
-}
-
-module.exports = {
-  assignMatch
 }
