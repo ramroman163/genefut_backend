@@ -16,8 +16,6 @@ Content-Type: application/json
 GET http://localhost:3000/teams
 
 
-
-
 ### Enviar equipos
 POST http://localhost:3000/teams
 Content-Type: application/json

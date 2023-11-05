@@ -31,7 +31,7 @@ app.post('/teams', async (req, res) => {
 
   const date = new Date()
 
-  const actualDate = date.toISOString().split('T')[0]
+  const actualDate = date.toISOString().slice(0, 19).replace('T', ' ')
 
   const idTeam1 = await saveTeams('Equipo 1', actualDate, 1)
   const idTeam2 = await saveTeams('Equipo 2', actualDate, 1)
